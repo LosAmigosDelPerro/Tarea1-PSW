@@ -91,7 +91,7 @@ def generar_contrasena():
     print("Contraseña segura generada:", contrasena_segura)
     print("La contraseña será visible durante 30 segundos...")
     #time.sleep(3)
-    #ocultar_contrasena(len(contrasena))
+    ocultar_contrasena(len(contrasena))
 
 def ocultar_contrasena(length):
     if os.name == 'nt':
