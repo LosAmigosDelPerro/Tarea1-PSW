@@ -16,10 +16,11 @@ def generar_contrasena():
             else:
                 print("La longitud debe estar entre 8 y 32 caracteres.")
         except ValueError:
+            logging.warning("No se ha ingresado un numero valido")
             print("Ingrese un número válido.")
 
     
-
+    logging.info("Se ha solicitado generar una contraseña segura de longitud " + str(longitud) + ".")
     
     var_ascii = string.ascii_letters
     mayus = var_ascii[26:]
@@ -54,12 +55,13 @@ def generar_contrasena():
         if tipos_permitidos:
             break
         else:
-            
+            logging.warning("No se ha seleccionado ningun tipo de caracteres validos")
             print("\n***Seleccione al menos un tipo de caracteres.***\n")
 
     # Asegurar que la longitud mínima sea 12 si no hay caracteres especiales
     if '3' not in tipos_seleccionados and longitud < 12:
         longitud = 12
+        logging.info("Se modifico la longitud de la contraseña a 12 caracteres.")
     
     
     # Generar la contraseña
@@ -75,27 +77,32 @@ def generar_contrasena():
     if '1' in tipos_seleccionados and '3' not in tipos_seleccionados and '2' not in tipos_seleccionados: #solo letras
         auxiliar_cont[ubicaciones[0]] = min_mayus[0]
         auxiliar_cont[ubicaciones[1]] = min_minus[0]
+        logging.info("Se asegura que la contraseña cumpla con los criterios de seguridad especificados para solo letras: al menos una minuscula y mayuscula")
     elif '1' in tipos_seleccionados and '3' in tipos_seleccionados and '2' not in tipos_seleccionados: #letras y especiales
         auxiliar_cont[ubicaciones[0]] = min_mayus[0]
         auxiliar_cont[ubicaciones[1]] = min_minus[0]
         auxiliar_cont[ubicaciones[2]] = min_especiales[0]
+        logging.info("Se asegura que la contraseña cumpla con los criterios de seguridad especificados para solo letras y especiales: al menos una minuscula y mayuscula y un caracter especial")
     elif '1' in tipos_seleccionados and '3' not in tipos_seleccionados and '2' in tipos_seleccionados: #letras y numeros
         auxiliar_cont[ubicaciones[0]] = min_mayus[0]
         auxiliar_cont[ubicaciones[1]] = min_minus[0]
         auxiliar_cont[ubicaciones[2]] = min_digitos[0]
+        logging.info("Se asegura que la contraseña cumpla con los criterios de seguridad especificados para solo letras y numeros: al menos una minuscula y mayuscula y un numero")
     elif '1' not in tipos_seleccionados and '3' in tipos_seleccionados and '2' in tipos_seleccionados: #numeros y especiales
         auxiliar_cont[ubicaciones[0]] = min_digitos[0]
         auxiliar_cont[ubicaciones[1]] = min_especiales[0]
+        logging.info("Se asegura que la contraseña cumpla con los criterios de seguridad especificados para solo numeros y especiales: al menos un caracter especial y un numero")
     elif '1' in tipos_seleccionados and '3' in tipos_seleccionados and '2' in tipos_seleccionados: #todos
         auxiliar_cont[ubicaciones[0]] = min_mayus[0]
         auxiliar_cont[ubicaciones[1]] = min_minus[0]
         auxiliar_cont[ubicaciones[2]] = min_digitos[0]
-        auxiliar_cont[ubicaciones[3]] = min_especiales[0]       
+        auxiliar_cont[ubicaciones[3]] = min_especiales[0]
+        logging.info("Se asegura que la contraseña cumpla con los criterios de seguridad especificados: al menos una minuscula y mayuscula, un caracter especial y un numero")      
 
     
 
     contrasena_segura = ''.join(auxiliar_cont)
-    
+    logging.info("Se genero una contraseña segura.")
     print("Contraseña segura generada:", contrasena_segura)
     print("La contraseña será visible durante 15 segundos...")
     time.sleep(15)
