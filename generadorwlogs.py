@@ -2,6 +2,7 @@ import random
 import string
 import os
 import time
+import logging
 
 def generar_contrasena():
     print("Generador de Contraseñas Seguras")
@@ -77,27 +78,22 @@ def generar_contrasena():
     if '1' in tipos_seleccionados and '3' not in tipos_seleccionados and '2' not in tipos_seleccionados: #solo letras
         auxiliar_cont[ubicaciones[0]] = min_mayus[0]
         auxiliar_cont[ubicaciones[1]] = min_minus[0]
-        logging.info("Se asegura que la contraseña cumpla con los criterios de seguridad especificados para solo letras: al menos una minuscula y mayuscula")
     elif '1' in tipos_seleccionados and '3' in tipos_seleccionados and '2' not in tipos_seleccionados: #letras y especiales
         auxiliar_cont[ubicaciones[0]] = min_mayus[0]
         auxiliar_cont[ubicaciones[1]] = min_minus[0]
         auxiliar_cont[ubicaciones[2]] = min_especiales[0]
-        logging.info("Se asegura que la contraseña cumpla con los criterios de seguridad especificados para solo letras y especiales: al menos una minuscula y mayuscula y un caracter especial")
     elif '1' in tipos_seleccionados and '3' not in tipos_seleccionados and '2' in tipos_seleccionados: #letras y numeros
         auxiliar_cont[ubicaciones[0]] = min_mayus[0]
         auxiliar_cont[ubicaciones[1]] = min_minus[0]
         auxiliar_cont[ubicaciones[2]] = min_digitos[0]
-        logging.info("Se asegura que la contraseña cumpla con los criterios de seguridad especificados para solo letras y numeros: al menos una minuscula y mayuscula y un numero")
     elif '1' not in tipos_seleccionados and '3' in tipos_seleccionados and '2' in tipos_seleccionados: #numeros y especiales
         auxiliar_cont[ubicaciones[0]] = min_digitos[0]
         auxiliar_cont[ubicaciones[1]] = min_especiales[0]
-        logging.info("Se asegura que la contraseña cumpla con los criterios de seguridad especificados para solo numeros y especiales: al menos un caracter especial y un numero")
     elif '1' in tipos_seleccionados and '3' in tipos_seleccionados and '2' in tipos_seleccionados: #todos
         auxiliar_cont[ubicaciones[0]] = min_mayus[0]
         auxiliar_cont[ubicaciones[1]] = min_minus[0]
         auxiliar_cont[ubicaciones[2]] = min_digitos[0]
-        auxiliar_cont[ubicaciones[3]] = min_especiales[0]
-        logging.info("Se asegura que la contraseña cumpla con los criterios de seguridad especificados: al menos una minuscula y mayuscula, un caracter especial y un numero")      
+        auxiliar_cont[ubicaciones[3]] = min_especiales[0]      
 
     
 
@@ -118,9 +114,5 @@ def ocultar_contrasena(length):
     hidden_password = '*' * length
     print("Contraseña generada:", hidden_password)
     print("La contraseña ha sido ocultada.")
-
-
-
-generar_contrasena()
 
 

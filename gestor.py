@@ -3,6 +3,7 @@ import getpass
 import json
 import signal
 import logging
+from generadorwlogs import generar_contrasena
 from datetime import datetime
 from dotenv import load_dotenv
 from time import sleep
@@ -14,7 +15,8 @@ def print_menu():
     print("2. Recuperar contraseña")
     print("3. Actualizar contraseña")
     print("4. Eliminar contraseña")
-    print("5. Salir")
+    print("5. Generar contraseña")
+    print("6. Salir")
 
 def sub_menu():
     print("\n1. Mostrar todas las contraseñas")
@@ -247,6 +249,9 @@ def main():
             remove_password(sub_choice)
 
         elif choice == "5":
+            generar_contrasena()
+
+        elif choice == "6":
             with open("passwords.txt", "w") as f:
                 logging.info("Se seleccionó la opción 5.")
                 f.write(json.dumps({"master_password": encrypt_password(master_password, key).decode()}))

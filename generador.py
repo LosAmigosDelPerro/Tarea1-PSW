@@ -111,9 +111,3 @@ def ocultar_contrasena(length):
     hidden_password = '*' * length
     print("Contraseña generada:", hidden_password)
     print("La contraseña ha sido ocultada.")
-
-
-
-generar_contrasena()
-
-
