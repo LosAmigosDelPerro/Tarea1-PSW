@@ -80,6 +80,17 @@ def index_input(len):
         except ValueError:
             print("El valor ingresado no es válido.")
 
+def confirm_input():
+    while True:
+        try:
+            confirm = input("¿Está seguro que desea eliminar la contraseña? (Y/N): ")
+            if confirm == "Y" or confirm == "N":
+                return confirm
+            else:
+                print("El valor ingresado no es válido.")
+        except ValueError:
+            print("El valor ingresado no es válido.")
+
 def filter_passwords(keyword):
     filtered_passwords = []
     for data in passwords_data:
@@ -138,8 +149,8 @@ def get_password(choice):
         print(f"Aplicacion: {selected_data}")
         print(f"Contraseña: {selected_password}")
         logging.info(f"Se obtuvo la contraseña de {selected_data}")
-        print("Volviendo al menu en 5 segundos...")
-        sleep(5)
+        print("Volviendo al menu en 10 segundos...")
+        sleep(10)
         clear()
     else:
         print("No hay contraseñas almacenadas.")
@@ -168,6 +179,10 @@ def remove_password(choice):
         if selected_data is None:
             logging.warning("No se encontraron aplicaciones con ese alias.")
             print("No se encontraron aplicaciones con ese alias.")
+            return
+        confirm = confirm_input()
+        if confirm == "N":
+            logging.info(f"Se canceló la eliminación de la contraseña de {selected_data}")
             return
         logging.info(f"Se eliminó la contraseña de {selected_data}")
         passwords_data.pop(selected_data)
