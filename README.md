@@ -7,7 +7,7 @@ Puedes crear, ver, actualizar y eliminar contraseñas de tus aplicaciones favori
 - Python (3.9.2 en adelante)
 - cryptography
 - python-dotenv
-## Instalacion
+## Instalacion y como usar
 Para poder utilizar el sistema, debes descargar [Python](https://www.python.org/downloads/).
 
 Luego descargar las dependencias con el gestor de paquetes [pip](https://pypi.org/project/pip/).
@@ -21,6 +21,10 @@ Antes de comenzar a utilizar el programa, debes generar una llave privada, que t
 Ahora sí, podrás utilizar el sistema de gestor y generador de contraseñas.
 
     python gestor.py
+
+## Contribuir
+
+Para poder contribuir dentro del proyecto, puedes realizar un *fork* del repositorio para trabajar y luego realizar un Pull Request con los cambios que deseas integrar en el proyecto.
 
 ## Autores
 [Joaquín Gatica](https://github.com/joaquinuc150) 
